@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "graphql": "^15.5.0",
     "graphql-import": "^1.0.2",
     "graphql-request": "^3.4.0",
+    "graphql-tools": "^7.0.4",
     "graphql-yoga": "^1.18.3",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.10",
