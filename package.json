@@ -4,6 +4,7 @@
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/ioredis": "^4.22.1",
     "@types/jest": "^26.0.21",
     "@types/node": "^8.0.29",
     "@types/uuid": "^8.3.0",
@@ -24,9 +25,11 @@
     "graphql-request": "^3.4.0",
     "graphql-tools": "^7.0.4",
     "graphql-yoga": "^1.18.3",
+    "ioredis": "^4.24.4",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.10",
     "typeorm": "0.2.31",
+    "uuid": "^8.3.2",
     "yup": "^0.32.9"
   },
   "scripts": {
