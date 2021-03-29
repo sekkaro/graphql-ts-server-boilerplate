@@ -1,9 +1,12 @@
 import * as bcrypt from "bcryptjs";
 import * as yup from "yup";
+import { v4 } from "uuid";
+
 import { User } from "../../entity/User";
 import { ResolverMap } from "../../types/graphql-utils";
 import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 import { formatYupError } from "../../utils/formatYupError";
+import { sendEmail } from "../../utils/sendEmail";
 import {
   duplicateEmail,
   emailNotLongEnough,
@@ -44,13 +47,19 @@ export const resolvers: ResolverMap = {
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = User.create({
+        id: v4(),
         email,
         password: hashedPassword,
       });
 
       await user.save();
 
-      await createConfirmEmailLink(url, user.id, redis);
+      if (process.env.NODE_ENV !== "test") {
+        await sendEmail(
+          email,
+          await createConfirmEmailLink(url, user.id, redis)
+        );
+      }
 
       return null;
     },
