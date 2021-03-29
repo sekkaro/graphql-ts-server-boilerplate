@@ -20,7 +20,10 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
+    "@gql2ts/from-schema": "^2.0.0-4",
+    "@types/express": "^4.17.11",
     "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
     "graphql": "^15.5.0",
     "graphql-import": "^1.0.2",
     "graphql-request": "^3.4.0",
@@ -36,8 +39,8 @@
   },
   "scripts": {
     "start": "SET NODE_ENV=development&nodemon --exec ts-node src/index.ts",
-    "test": "SET NODE_ENV=test&jest --watch",
-    "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
+    "test": "SET NODE_ENV=test&jest --watchAll --runInBand",
+    "gen-schema-types": "ts-node src/scripts/createTypes.ts"
   },
   "jest": {
     "globalSetup": "./src/testSetup/callSetup.js",
