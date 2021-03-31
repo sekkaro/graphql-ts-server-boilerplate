@@ -1,4 +1,3 @@
-import * as bcrypt from "bcryptjs";
 import * as yup from "yup";
 
 import { User } from "../../entity/User";
@@ -22,7 +21,7 @@ export const resolvers: ResolverMap = {
   Mutation: {
     register: async (
       _,
-      args: GQL.IRegisterOnMutationArguments,
+      args: GQL.IRegisterOnMutationArguments
       // { redis, url }
     ) => {
       try {
@@ -44,10 +43,10 @@ export const resolvers: ResolverMap = {
           },
         ];
       }
-      const hashedPassword = await bcrypt.hash(password, 10);
+
       const user = User.create({
         email,
-        password: hashedPassword,
+        password,
       });
 
       await user.save();
