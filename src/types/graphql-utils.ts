@@ -1,6 +1,7 @@
+import { Session as expressSession } from "express-session";
 import { Redis } from "ioredis";
 
-export interface Session {
+export interface Session extends expressSession {
   userId?: string;
 }
 
