@@ -8,6 +8,7 @@ import { redis } from "./redis";
 import { confirmEmail } from "./routes/confirmEmail";
 import { createTypeormConn } from "./utils/createTypeormConn";
 import { genSchema } from "./utils/genSchema";
+import { redisSessionPrefix } from "./constants";
 
 const RedisStore = connectRedis(session);
 
@@ -18,6 +19,7 @@ export const startServer = async () => {
       redis,
       url: request.protocol + "://" + request.get("host"),
       session: request.session,
+      req: request,
     }),
   });
 
@@ -25,6 +27,7 @@ export const startServer = async () => {
     session({
       store: new RedisStore({
         client: redis,
+        prefix: redisSessionPrefix,
       }),
       name: "qid",
       secret: process.env.SESSION_SECRET as string,
