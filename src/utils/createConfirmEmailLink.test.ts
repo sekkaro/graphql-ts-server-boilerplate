@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import { Connection } from "typeorm";
 
 import { User } from "../entity/User";
-import { createConfirmEmailLink } from "./createConfirmEmailLink";
+import { createConfirmEmailLink } from "./createForgotPasswordLink";
 import { createTypeormConn } from "./createTypeormConn";
 
 let userId = "";
@@ -22,7 +22,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   conn.close();
-})
+});
 
 test("Make sure it confirms user and clears key in redis", async () => {
   const url = await createConfirmEmailLink(

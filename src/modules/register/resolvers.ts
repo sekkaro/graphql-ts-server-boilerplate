@@ -3,18 +3,18 @@ import * as yup from "yup";
 import { User } from "../../entity/User";
 import { ResolverMap } from "../../types/graphql-utils";
 import { formatYupError } from "../../utils/formatYupError";
+import { registerPasswordValidation } from "../../yupSchemas";
 // import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 // import { sendEmail } from "../../utils/sendEmail";
 import {
   duplicateEmail,
   emailNotLongEnough,
   invalidEmail,
-  passwordNotLongEnough,
 } from "./errorMessages";
 
 const schema = yup.object().shape({
   email: yup.string().min(3, emailNotLongEnough).max(255).email(invalidEmail),
-  password: yup.string().min(3, passwordNotLongEnough).max(255),
+  password: registerPasswordValidation,
 });
 
 export const resolvers: ResolverMap = {
