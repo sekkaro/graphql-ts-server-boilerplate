@@ -3,7 +3,11 @@ import { userSessionIdPrefix } from "../../constants";
 
 import { User } from "../../entity/User";
 import { ResolverMap } from "../../types/graphql-utils";
-import { confirmEmailError, invalidLogin } from "./errorMessages";
+import {
+  confirmEmailError,
+  forgotPasswordLockedError,
+  invalidLogin,
+} from "./errorMessages";
 
 const errorResponse = [
   {
@@ -30,6 +34,15 @@ export const resolvers: ResolverMap = {
           {
             path: "email",
             message: confirmEmailError,
+          },
+        ];
+      }
+
+      if (user.forgotPasswordLocked) {
+        return [
+          {
+            path: "email",
+            message: forgotPasswordLockedError,
           },
         ];
       }
