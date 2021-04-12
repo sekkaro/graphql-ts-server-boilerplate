@@ -7,6 +7,7 @@
     "@types/connect-redis": "^0.0.16",
     "@types/express-rate-limit": "^5.1.1",
     "@types/express-session": "^1.17.3",
+    "@types/faker": "^5.5.1",
     "@types/ioredis": "^4.22.1",
     "@types/jest": "^26.0.21",
     "@types/node": "^8.0.29",
@@ -36,6 +37,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.6",
     "express-session": "^1.17.1",
+    "faker": "^5.5.3",
     "graphql": "^15.5.0",
     "graphql-import": "^1.0.2",
     "graphql-request": "^3.4.0",
@@ -56,11 +58,11 @@
   },
   "scripts": {
     "start": "SET NODE_ENV=development&nodemon --exec ts-node src/index.ts",
-    "test": "SET NODE_ENV=test&jest --watch --runInBand",
+    "test": "SET NODE_ENV=test&jest --watch",
     "gen-schema-types": "ts-node src/scripts/createTypes.ts"
   },
   "jest": {
-    "globalSetup": "./src/testSetup/callSetup.js",
+    "globalSetup": "./src/testUtils/callSetup.js",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },

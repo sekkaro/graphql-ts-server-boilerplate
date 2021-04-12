@@ -1,16 +1,18 @@
 import { Connection } from "typeorm";
+import * as faker from "faker";
+
 import { User } from "../../entity/User";
-import { createTypeormConn } from "../../utils/createTypeormConn";
+import { createTestConn } from "../../testUtils/createTestConn";
 import { TestClient } from "../../utils/TestClient";
 import { confirmEmailError, invalidLogin } from "./errorMessages";
 
-const email = "tom@bob.com";
-const password = "bob";
+const email = faker.internet.email();
+const password = faker.internet.password();
 
 let conn: Connection;
 
 beforeAll(async () => {
-  conn = await createTypeormConn();
+  conn = await createTestConn();
 });
 
 afterAll(async () => {
@@ -38,7 +40,12 @@ const loginExpectError = async (
 describe("login", () => {
   test("email not found send back error", async () => {
     const client = new TestClient(process.env.TEST_HOST as string);
-    await loginExpectError(client, "bob@bob.com", "whatever", invalidLogin);
+    await loginExpectError(
+      client,
+      faker.internet.email(),
+      faker.internet.password(),
+      invalidLogin
+    );
   });
 
   test("email not confirmed", async () => {
