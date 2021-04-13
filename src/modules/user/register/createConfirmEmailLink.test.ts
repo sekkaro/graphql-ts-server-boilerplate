@@ -11,6 +11,7 @@ let userId = "";
 const redis = new Redis();
 
 let conn: Connection;
+faker.seed(Date.now() + 4);
 
 beforeAll(async () => {
   conn = await createTestConn();

@@ -6,6 +6,7 @@ import { createTestConn } from "../../../testUtils/createTestConn";
 import { TestClient } from "../../../utils/TestClient";
 import { confirmEmailError, invalidLogin } from "./errorMessages";
 
+faker.seed(Date.now() + 1);
 const email = faker.internet.email();
 const password = faker.internet.password();
 

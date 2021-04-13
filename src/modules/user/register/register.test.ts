@@ -11,6 +11,7 @@ import {
   passwordNotLongEnough,
 } from "./errorMessages";
 
+faker.seed(Date.now() + 5);
 const email = faker.internet.email();
 const password = faker.internet.password();
 
