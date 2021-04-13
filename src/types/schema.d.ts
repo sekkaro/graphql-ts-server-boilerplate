@@ -48,6 +48,11 @@ email: string;
 password: string;
 }
 
+interface IQuery {
+__typename: "Query";
+me: IUser | null;
+}
+
 interface IError {
 __typename: "Error";
 path: string;
@@ -57,17 +62,7 @@ message: string;
 interface IUser {
 __typename: "User";
 id: string;
-email: string | null;
-}
-
-interface IQuery {
-__typename: "Query";
-me: IUser | null;
-hello: string;
-}
-
-interface IHelloOnQueryArguments {
-name?: string | null;
+email: string;
 }
 }
 

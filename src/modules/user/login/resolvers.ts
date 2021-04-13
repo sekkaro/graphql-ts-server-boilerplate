@@ -1,8 +1,8 @@
 import * as bcrypt from "bcryptjs";
-import { userSessionIdPrefix } from "../../constants";
+import { userSessionIdPrefix } from "../../../constants";
 
-import { User } from "../../entity/User";
-import { ResolverMap } from "../../types/graphql-utils";
+import { User } from "../../../entity/User";
+import { ResolverMap } from "../../../types/graphql-utils";
 import {
   confirmEmailError,
   forgotPasswordLockedError,

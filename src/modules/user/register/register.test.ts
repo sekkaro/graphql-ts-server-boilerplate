@@ -1,9 +1,9 @@
 import * as faker from "faker";
 import { Connection } from "typeorm";
 
-import { User } from "../../entity/User";
-import { createTestConn } from "../../testUtils/createTestConn";
-import { TestClient } from "../../utils/TestClient";
+import { User } from "../../../entity/User";
+import { createTestConn } from "../../../testUtils/createTestConn";
+import { TestClient } from "../../../utils/TestClient";
 import {
   duplicateEmail,
   emailNotLongEnough,

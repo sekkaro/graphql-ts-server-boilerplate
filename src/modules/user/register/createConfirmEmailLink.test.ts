@@ -3,9 +3,9 @@ import fetch from "node-fetch";
 import { Connection } from "typeorm";
 import * as faker from "faker";
 
-import { User } from "../../entity/User";
+import { User } from "../../../entity/User";
 import { createConfirmEmailLink } from "./createConfirmEmailLink";
-import { createTestConn } from "../../testUtils/createTestConn";
+import { createTestConn } from "../../../testUtils/createTestConn";
 
 let userId = "";
 const redis = new Redis();
